@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import Submit from "../assets/svg/Submit";
+import { Link } from "react-router-dom";
 
 export default function Diagnosis() {
   const textStyle = "font-mono text-blue-900 text-xl";
-
   const [result, setResult] = useState<number>(0);
   const [remark, setRemark] = useState("");
   const [information, setInformation] = useState([
@@ -86,6 +86,8 @@ export default function Diagnosis() {
     setRemark(remarks);
   }, [result]);
 
+  console.log(result);
+
   return (
     <div>
       <h1 className="text-center text-4xl font-mono text-blue-900">
@@ -127,7 +129,7 @@ export default function Diagnosis() {
         })}
       </ul>
 
-      <div className="flex flex-col gap-2 p-10 ">
+      {/* <div className="flex flex-col gap-2 p-10 ">
         <h1 className="text-4xl font-mono text-blue-900">Diagnosis Result</h1>
         <p className="text-blue-900 font-semibold">Final Certainty : </p>
         <p className="text-blue-900 font-semibold">
@@ -136,14 +138,23 @@ export default function Diagnosis() {
         <p className="text-blue-900 font-semibold">
           Certainty Factor : {remark}
         </p>
-      </div>
-
-      <button
-        className="fixed bottom-10 right-10 h-20 w-20 justify-center flex items-center bg-blue-200 rounded-lg hover:bg-blue-500"
-        onClick={() => handleResult()}
-      >
-        <Submit />
-      </button>
+      </div> */}
+      {result === 0 ? (
+        <button
+          className="fixed bottom-10 right-10 h-20 w-20 justify-center flex items-center bg-blue-200 rounded-lg hover:bg-blue-500"
+          onClick={() => handleResult()}
+        >
+          <Submit />
+        </button>
+      ) : (
+        <Link
+          to="/result"
+          state={{ diagnosisResult: result, remark: remark }}
+          className={textStyle}
+        >
+          Result
+        </Link>
+      )}
     </div>
   );
 }
