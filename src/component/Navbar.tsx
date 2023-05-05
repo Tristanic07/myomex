@@ -11,7 +11,7 @@ export default function Navbar() {
   return (
     <nav className="flex bg-slate-100 h-24 items-center justify-between px-20 mb-10">
       <a href="/">
-        <img src={Logo} alt="Logo" className="h-16" />
+        <img src={Logo} alt="Logo" className="h-20" />
       </a>
       <ul className="flex gap-10">
         <li>
