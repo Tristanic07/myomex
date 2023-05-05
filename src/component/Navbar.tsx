@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Logo from "../Image/1.png";
+import Logo from "../Image/logo.png";
 import Dropdown from "../assets/svg/Dropdown";
 export default function Navbar() {
   const textStyle = "text-xl text-blue-900 hover:text-blue-500";

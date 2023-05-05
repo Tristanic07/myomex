@@ -5,7 +5,7 @@ export default function Diagnosis() {
   const textStyle = "font-mono text-blue-900 text-xl";
 
   const [result, setResult] = useState<number>();
-
+  const [remarks, setRemarks] = useState();
   const [information, setInformation] = useState([
     {
       symptom: "Heavy or prolonged menstrual periods",
