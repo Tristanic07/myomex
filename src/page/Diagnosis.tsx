@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Submit from "../assets/svg/Submit";
 
 export default function Diagnosis() {
   const textStyle = "font-mono text-blue-900 text-xl";
 
-  const [result, setResult] = useState<number>();
-  const [remarks, setRemarks] = useState();
+  const [result, setResult] = useState<number>(0);
+  const [remark, setRemark] = useState("");
   const [information, setInformation] = useState([
     {
       symptom: "Heavy or prolonged menstrual periods",
@@ -72,6 +72,20 @@ export default function Diagnosis() {
     setResult(myomaProbability);
   };
 
+  useEffect(() => {
+    let remarks = "";
+    if (result === 0) return;
+    if (result < 30) {
+      remarks = "You have a low result of having myoma.";
+    } else if (result >= 30 && result < 70) {
+      remarks = "You have a moderate result of having myoma.";
+    } else {
+      remarks = "You have a high result of having myoma.";
+    }
+
+    setRemark(remarks);
+  }, [result]);
+
   return (
     <div>
       <h1 className="text-center text-4xl font-mono text-blue-900">
@@ -119,7 +133,9 @@ export default function Diagnosis() {
         <p className="text-blue-900 font-semibold">
           Probability : {result && `${result}%`}
         </p>
-        <p className="text-blue-900 font-semibold">Certainty Factor : </p>
+        <p className="text-blue-900 font-semibold">
+          Certainty Factor : {remark}
+        </p>
       </div>
 
       <button
