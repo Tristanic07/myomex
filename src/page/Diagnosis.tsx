@@ -129,35 +129,35 @@ export default function Diagnosis() {
           );
         })}
       </ul>
+
       <Popup
         trigger={
-          <button
-            className="fixed bottom-10 right-10 h-20 w-20 justify-center flex items-center bg-blue-200 rounded-lg hover:bg-blue-500"
-            onClick={() => handleResult()}
-          >
-            <Submit />
-          </button>
-        }
-        closeOnDocumentClick={false}
-        modal
-      >
-        {(close) => (
-          <div className="fixed right-1/2 top-1/2 h-32 border-2 w-64 bg-slate-300 border-slate-400 flex items-center justify-center rounded-xl">
+          <div>
             <button
-              className="absolute right-1 top-1 rounded-xl border-2 h-7 w-10 bg-red-500  "
-              onClick={() => close()}
+              className="fixed bottom-10 right-10 h-20 w-20 justify-center flex items-center bg-blue-200 rounded-lg hover:bg-blue-500"
+              onClick={() => handleResult()}
             >
-              <p> x</p>
+              <Submit />
             </button>
-            <Link
-              to="/result"
-              state={{ diagnosisResult: result, remark: remark }}
-              className={textStyle}
-            >
-              View Result Here!!!
-            </Link>
           </div>
-        )}
+        }
+      >
+        <div className="fixed right-1/2 top-1/2 h-32 border-2 w-64 bg-slate-300 border-slate-400 flex items-center justify-center rounded-xl gap-2">
+          {result === 12 ? (
+            <p className={textStyle}>Please Select Symptom!</p>
+          ) : (
+            <>
+              <p className={textStyle}>View Result</p>
+              <Link
+                to="/result"
+                state={{ result: result, remark: remark }}
+                className={textStyle}
+              >
+                <u>Here</u>!!!
+              </Link>
+            </>
+          )}
+        </div>
       </Popup>
     </div>
   );
