@@ -4,6 +4,7 @@ import EmailResult from "./page/EmailResult";
 import FeedBack from "./page/Feedback";
 import Home from "./page/Home";
 import { Routes, Route } from "react-router-dom";
+import Professional from "./page/Professional";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/diagnosis" element={<Diagnosis />} />
         <Route path="/feedback" element={<FeedBack />} />
         <Route path="/result" element={<EmailResult />} />
+        <Route path="/professional" element={<Professional />} />
       </Routes>
     </>
   );

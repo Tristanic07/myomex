@@ -152,32 +152,52 @@ export default function Diagnosis() {
         trigger={
           <div>
             <button
-              className="fixed bottom-10 right-10 h-20 w-20 justify-center flex items-center bg-blue-200 rounded-lg hover:bg-blue-500"
+              className="fixed bottom-10 right-10 h-20 w-20 justify-center flex flex-col items-center bg-blue-200 rounded-lg hover:bg-blue-500"
               onClick={() => handleResult()}
             >
               <Submit />
+              <p className="text-blue-900 font-semibold text-lg font-mono">
+                Submit
+              </p>
             </button>
           </div>
         }
       >
-        <div className="fixed right-1/2 top-1/2 h-32 border-2 w-64 bg-slate-300 border-slate-400 flex items-center justify-center rounded-xl gap-2 shadow-2xl">
-          {result === 12 || age === 0 ? (
+        {result === 12 || age === 0 ? (
+          <div className="fixed right-1/2 top-1/2 h-1/3 w-1/3 border-slate-400 bg-slate-300 rounded-xl flex justify-center items-center">
             <p className={`${textStyle} text-center`}>
-              Please Select Symptom and input Age!
+              Please Select Symptom <br />
+              and
+              <br /> input Age!
             </p>
-          ) : (
-            <>
-              <p className={textStyle}>View Result</p>
-              <Link
-                to="/result"
-                state={{ result: result, remark: remark }}
-                className={textStyle}
-              >
-                <u>Here</u>!!!
+          </div>
+        ) : (
+          <div className="fixed right-1/2 top-1/2 h-80 border-2 w-1/3 bg-slate-300 border-slate-400 flex   rounded-xl gap-2 shadow-2xl">
+            <div className="flex flex-col gap-2 p-5">
+              <h1 className="text-2xl font-mono text-blue-900">
+                Diagnosis Result
+              </h1>
+              <p className="text-blue-900 ">Final Certainty : </p>
+              <p className="text-blue-900 ">
+                Probability : {result && `${result}%`}
+              </p>
+              <p className="text-blue-900 ">Certainty Factor : {remark}</p>
+
+              <Link to="/result" state={{ result: result, remark: remark }}>
+                <button className="absolute bottom-5 left-5 text-blue-900 font-mono font-semibold bg-blue-400 rounded-lg w-28 h-14">
+                  Email Result
+                </button>
               </Link>
-            </>
-          )}
-        </div>
+              <Link to="/professional">
+                <button className="absolute bottom-5 right-5 text-blue-900 font-mono font-semibold rounded-lg w-28 h-14 bg-blue-400">
+                  Medical
+                  <br />
+                  Professional
+                </button>
+              </Link>
+            </div>
+          </div>
+        )}
       </Popup>
       <div className="flex items-center absolute right-14 gap-2 my-2">
         <input
