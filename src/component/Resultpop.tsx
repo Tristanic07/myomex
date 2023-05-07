@@ -7,7 +7,7 @@ export default function Resultpop({
   remark: string;
 }) {
   return (
-    <div className="fixed right-96 top-44 h-80 border-2 w-1/3 bg-slate-300 border-slate-400 flex   rounded-xl gap-2 shadow-2xl">
+    <div className="fixed right-96 top-44 h-80 border-2 w-1/3 bg-white border-blue-900 flex   rounded-xl gap-2 shadow-2xl">
       <div className="flex flex-col gap-2 p-5">
         <h1 className="text-2xl font-mono text-blue-900">Diagnosis Result</h1>
         <p className="text-blue-900 ">Final Certainty : </p>

@@ -1,9 +1,15 @@
-export default function Submit() {
+export default function Submit({
+  height,
+  width,
+}: {
+  height: string;
+  width: string;
+}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="40"
-      height="40"
+      width={width}
+      height={height}
       fill="currentColor"
       className="bi bi-clipboard2-pulse"
       viewBox="0 0 16 16"

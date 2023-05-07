@@ -108,12 +108,21 @@ export default function Diagnosis() {
   console.log(result);
 
   return (
-    <div className="pt-10 pb-36">
-      <h1 className="text-center text-4xl font-mono text-blue-900">
+    <div className="pt-10 pb-36 px-10">
+      <h1 className="text-center text-4xl font-mono text-blue-900 py-5">
         DISEASE DIAGNOSIS PROCESS
       </h1>
 
-      <div className="px-14 flex justify-between pt-10">
+      <div className="p-5 bg-yellow-100">
+        <p>
+          Please choose the symptoms according to the conditions experienced by
+          your body. You can choose the certainty of the condition of the
+          symptoms in your body from definitely not to state yes. If you press
+          the submit button (📋) below to view the diagnostic result.
+        </p>
+      </div>
+
+      <div className="px-4 flex justify-between pt-10">
         <div className="flex gap-5">
           <h1 className={`font-semibold ${textStyle}`}>No.</h1>
           <h1 className={`font-semibold ${textStyle}`}>Symptom</h1>
@@ -121,7 +130,7 @@ export default function Diagnosis() {
         <h1 className={`font-semibold ${textStyle}`}>Select Symptom</h1>
       </div>
 
-      <ul className="mx-10 border-x-2 border-t-2 rounded-lg">
+      <ul className=" border-x-2 border-t-2 rounded-lg">
         {...information.map((info, index) => {
           return (
             <li
@@ -155,7 +164,7 @@ export default function Diagnosis() {
               className="fixed bottom-10 right-10 h-20 w-20 justify-center flex flex-col items-center bg-blue-200 rounded-lg hover:bg-blue-500"
               onClick={() => handleResult()}
             >
-              <Submit />
+              <Submit height="40" width="40" />
               <p className="text-blue-900 font-semibold text-lg font-mono">
                 Submit
               </p>
@@ -164,7 +173,7 @@ export default function Diagnosis() {
         }
       >
         {result === 12 || age === 0 ? (
-          <div className="fixed right-96 top-44 h-1/3 w-1/3 border-slate-400 bg-slate-300 rounded-xl flex justify-center items-center">
+          <div className="fixed right-96 top-44 h-1/3 w-1/3 border-blue-900 border-2 bg-white rounded-xl flex justify-center items-center">
             <p className={`${textStyle} text-center`}>
               Please Select Symptom <br />
               and

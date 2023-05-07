@@ -2,6 +2,7 @@ import Img2 from "../Image/2.jpeg";
 import Sidenav from "../component/Sidenav";
 import AboutUs from "./AboutUs";
 import Professional from "./Professional";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -9,22 +10,22 @@ export default function Home() {
       <Sidenav />
       <div className="flex px-20 gap-10 py-32" id="home">
         <img src={Img2} alt="Health" className="w-1/2 h-64 border-2" />
-        <p className="w-1/2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, id
-          reiciendis laborum adipisci maiores quidem? Temporibus cupiditate
-          ullam perspiciatis? Deserunt accusantium corporis sed vel! Facilis
-          dolores est sit cumque nobis.
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint quo
-          debitis, facere hic, omnis voluptatum ad suscipit ipsam numquam
-          dolores nulla, doloremque repellendus porro dolore obcaecati dolor
-          animi accusantium odit.
-          <br />
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-          cumque autem nihil dolor, natus quasi praesentium. Possimus
-          perspiciatis repellendus, qui nesciunt suscipit vero porro amet
-          dolorem incidunt quo. Explicabo, necessitatibus?
-        </p>
+        <div className="px-5 flex flex-col gap-3">
+          <h1 className="text-center text-3xl font-semibold font-mono text-blue-900">
+            TAKE A DIAGNOSIS TEST/PROCESS
+          </h1>
+          <p className="">
+            An efficient and convenient method to identify if you have symptoms
+            of a myoma condition is through Diagnosis screening
+          </p>
+          <div className="flex justify-end">
+            <Link to="/diagnosis">
+              <button className="h-12 w-44 text-blue-900 bg-blue-200 rounded-3xl border-2 border-blue-900  font-semibold hover:bg-blue-900 hover:text-white">
+                Take a Diagnosis test
+              </button>
+            </Link>
+          </div>
+        </div>
       </div>
       <AboutUs />
       <Professional />

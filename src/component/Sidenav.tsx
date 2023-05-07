@@ -5,7 +5,7 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 
 export default function Sidenav() {
   return (
-    <div className="flex flex-col gap-2 fixed right-5 top-32 border-2 border-blue-900 rounded-lg p-1 bg-slate-200">
+    <div className="flex flex-col gap-2 fixed right-5 top-32 border-2 border-blue-900 rounded-lg p-1 bg-slate-200 hover:shadow-2xl">
       <AnchorLink href="#home">
         <HomeLogo width="32" height="32" />
       </AnchorLink>
