@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Submit from "../assets/svg/Submit";
-import { Link } from "react-router-dom";
 import Popup from "reactjs-popup";
+import Resultpop from "../component/Resultpop";
 
 export default function Diagnosis() {
   const textStyle = "font-mono text-blue-900 text-xl";
@@ -164,7 +164,7 @@ export default function Diagnosis() {
         }
       >
         {result === 12 || age === 0 ? (
-          <div className="fixed right-1/2 top-1/2 h-1/3 w-1/3 border-slate-400 bg-slate-300 rounded-xl flex justify-center items-center">
+          <div className="fixed right-96 top-44 h-1/3 w-1/3 border-slate-400 bg-slate-300 rounded-xl flex justify-center items-center">
             <p className={`${textStyle} text-center`}>
               Please Select Symptom <br />
               and
@@ -172,31 +172,7 @@ export default function Diagnosis() {
             </p>
           </div>
         ) : (
-          <div className="fixed right-1/2 top-1/2 h-80 border-2 w-1/3 bg-slate-300 border-slate-400 flex   rounded-xl gap-2 shadow-2xl">
-            <div className="flex flex-col gap-2 p-5">
-              <h1 className="text-2xl font-mono text-blue-900">
-                Diagnosis Result
-              </h1>
-              <p className="text-blue-900 ">Final Certainty : </p>
-              <p className="text-blue-900 ">
-                Probability : {result && `${result}%`}
-              </p>
-              <p className="text-blue-900 ">Certainty Factor : {remark}</p>
-
-              <Link to="/result" state={{ result: result, remark: remark }}>
-                <button className="absolute bottom-5 left-5 text-blue-900 font-mono font-semibold bg-blue-400 rounded-lg w-28 h-14">
-                  Email Result
-                </button>
-              </Link>
-              <Link to="/professional">
-                <button className="absolute bottom-5 right-5 text-blue-900 font-mono font-semibold rounded-lg w-28 h-14 bg-blue-400">
-                  Medical
-                  <br />
-                  Professional
-                </button>
-              </Link>
-            </div>
-          </div>
+          <Resultpop result={result} remark={remark} />
         )}
       </Popup>
       <div className="flex items-center absolute right-14 gap-2 my-2">
