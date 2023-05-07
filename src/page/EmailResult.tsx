@@ -1,14 +1,9 @@
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
 
 export default function EmailResult() {
   const location = useLocation();
   const result = location.state?.result;
   const remark = location.state?.remark;
-
-  useEffect(() => {
-    console.log("Location :", location);
-  }, []);
 
   return (
     <div>

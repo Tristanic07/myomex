@@ -142,7 +142,7 @@ export default function Diagnosis() {
           </div>
         }
       >
-        <div className="fixed right-1/2 top-1/2 h-32 border-2 w-64 bg-slate-300 border-slate-400 flex items-center justify-center rounded-xl gap-2">
+        <div className="fixed right-1/2 top-1/2 h-32 border-2 w-64 bg-slate-300 border-slate-400 flex items-center justify-center rounded-xl gap-2 shadow-2xl">
           {result === 12 ? (
             <p className={textStyle}>Please Select Symptom!</p>
           ) : (
