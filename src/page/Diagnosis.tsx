@@ -7,6 +7,7 @@ export default function Diagnosis() {
   const textStyle = "font-mono text-blue-900 text-xl";
   const [result, setResult] = useState<number>(0);
   const [remark, setRemark] = useState("");
+  const [age, setAge] = useState<number>(0);
   const [information, setInformation] = useState([
     {
       symptom: "Heavy or prolonged menstrual periods",
@@ -74,23 +75,40 @@ export default function Diagnosis() {
   };
 
   useEffect(() => {
+    // Rule-based remark generation
     let remarks = "";
     if (result === 0) return;
+
     if (result < 30) {
-      remarks = "You have a low result of having myoma.";
+      if (age < 40) {
+        remarks = "You have a low probability of having myoma.";
+      } else {
+        remarks =
+          "You have a low probability of having myoma. However, it is advisable to consult a healthcare professional for further evaluation due to your age.";
+      }
     } else if (result >= 30 && result < 70) {
-      remarks = "You have a moderate result of having myoma.";
+      if (age < 40) {
+        remarks = "You have a moderate probability of having myoma.";
+      } else {
+        remarks =
+          "You have a moderate probability of having myoma. It is recommended to consult a healthcare professional for a comprehensive evaluation.";
+      }
     } else {
-      remarks = "You have a high result of having myoma.";
+      if (age < 40) {
+        remarks = "You have a high probability of having myoma.";
+      } else {
+        remarks =
+          "You have a high probability of having myoma. It is advisable to consult a healthcare professional for further assessment and guidance.";
+      }
     }
 
     setRemark(remarks);
-  }, [result]);
+  }, [result, age]);
 
   console.log(result);
 
   return (
-    <div>
+    <div className="pt-10">
       <h1 className="text-center text-4xl font-mono text-blue-900">
         DISEASE DIAGNOSIS PROCESS
       </h1>
@@ -143,8 +161,10 @@ export default function Diagnosis() {
         }
       >
         <div className="fixed right-1/2 top-1/2 h-32 border-2 w-64 bg-slate-300 border-slate-400 flex items-center justify-center rounded-xl gap-2 shadow-2xl">
-          {result === 12 ? (
-            <p className={textStyle}>Please Select Symptom!</p>
+          {result === 12 || age === 0 ? (
+            <p className={`${textStyle} text-center`}>
+              Please Select Symptom and input Age!
+            </p>
           ) : (
             <>
               <p className={textStyle}>View Result</p>
@@ -159,6 +179,18 @@ export default function Diagnosis() {
           )}
         </div>
       </Popup>
+      <div className="flex items-center absolute right-14 gap-2 my-2">
+        <input
+          type="number"
+          placeholder="Input Age"
+          className="rounded-lg h-10 w-40 px-1 border-2 border-blue-800"
+          value={age === 0 ? "" : age}
+          onChange={(e) => setAge(parseInt(e.target.value))}
+        />
+        <label>
+          <h1 className="text-xl font-semibold text-blue-900 font-mono">Age</h1>
+        </label>
+      </div>
     </div>
   );
 }

@@ -44,7 +44,7 @@ export default function FeedBack() {
             Name
           </h1>
         </label>
-        <input type="text" name="user_name" className="rounded-lg h-11" />
+        <input type="text" name="user_name" className="rounded-lg h-11 px-1" />
         <label>
           <h1 className="text-lg font-semibold text-blue-900 font-mono">
             Email
@@ -53,18 +53,18 @@ export default function FeedBack() {
         <input
           type="email"
           name="user_email"
-          className="rounded-lg h-11 w-96"
+          className="rounded-lg h-11 px-1 w-96"
         />
         <label>
           <h1 className="text-lg font-semibold text-blue-900 font-mono">
             Message
           </h1>
         </label>
-        <textarea name="message" className="rounded-lg h-32" />
+        <textarea name="message" className="rounded-lg px-1 h-32" />
         <input
           type="submit"
           value="Send"
-          className="bg-blue-800 rounded-lg h-11 mt-5"
+          className="bg-blue-800 rounded-lg text-white h-11 mt-5"
         />
       </form>
     </div>

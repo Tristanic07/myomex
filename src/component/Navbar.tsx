@@ -9,7 +9,7 @@ export default function Navbar() {
     setIsDropDown(!isDropDown);
   };
   return (
-    <nav className="flex bg-slate-100 h-24 items-center justify-between px-20 mb-10">
+    <nav className="flex bg-slate-100 h-24 items-center justify-between px-20 ">
       <a href="/">
         <img src={Logo} alt="Logo" className="h-20" />
       </a>
