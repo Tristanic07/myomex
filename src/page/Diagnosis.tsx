@@ -108,7 +108,7 @@ export default function Diagnosis() {
   console.log(result);
 
   return (
-    <div className="pt-10">
+    <div className="pt-10 pb-36">
       <h1 className="text-center text-4xl font-mono text-blue-900">
         DISEASE DIAGNOSIS PROCESS
       </h1>

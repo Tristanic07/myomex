@@ -1,7 +1,7 @@
 import Logo from "../Image/logo.png";
 export default function AboutUs() {
   return (
-    <div className="py-10 bg-gray-100">
+    <div className="py-10 bg-gray-100" id="info">
       <h1 className="text-center text-5xl font-mono text-blue-900 font-bold ">
         About Us
       </h1>
