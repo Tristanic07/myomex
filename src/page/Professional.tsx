@@ -3,7 +3,7 @@ import Card from "../component/Card";
 export default function Professional() {
   return (
     <div className="py-10" id="group">
-      <h1 className="text-center text-5xl font-mono text-blue-900 font-bold">
+      <h1 className="text-center text-3xl font-mono text-blue-900 font-bold">
         MEDICAL PROFESSIONALS in GYNECOLOGY
       </h1>
       <div className="flex gap-20 justify-center items-center py-10">
