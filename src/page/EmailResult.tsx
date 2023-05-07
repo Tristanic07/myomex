@@ -28,10 +28,10 @@ export default function EmailResult() {
 
     emailjs
       .sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
+        "service_hn4qpwz",
+        "template_pt9spgd",
         form.current!,
-        "YOUR_USER_ID"
+        "n0sMVMDKIwekK7y_P"
       )
       .then(
         (result) => {
