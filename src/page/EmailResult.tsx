@@ -14,23 +14,34 @@ export default function EmailResult() {
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    const userName = form.current?.querySelector(
+      'input[name="user_name"]'
+    ) as HTMLInputElement;
+    const userEmail = form.current?.querySelector(
+      'input[name="user_email"]'
+    ) as HTMLInputElement;
+
+    if (!userName.value || !userEmail.value) {
+      alert("Please fill in all fields");
+      return;
+    }
+
     emailjs
       .sendForm(
-        "service_hn4qpwz",
-        "template_j6bvwcg",
+        "YOUR_SERVICE_ID",
+        "YOUR_TEMPLATE_ID",
         form.current!,
-        "n0sMVMDKIwekK7y_P"
+        "YOUR_USER_ID"
       )
       .then(
         (result) => {
           console.log(result.text);
           alert("Diagnosis Result sent successfully!");
-          window.location.reload();
+          form.current?.reset(); // Reset the form after successful submission
         },
         (error) => {
           console.log(error.text);
           alert("Diagnosis Result not sent!");
-          window.location.reload();
         }
       );
   };

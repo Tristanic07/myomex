@@ -8,6 +8,21 @@ export default function FeedBack() {
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    const userName = form.current?.querySelector(
+      'input[name="user_name"]'
+    ) as HTMLInputElement;
+    const userEmail = form.current?.querySelector(
+      'input[name="user_email"]'
+    ) as HTMLInputElement;
+    const message = form.current?.querySelector(
+      'textarea[name="message"]'
+    ) as HTMLTextAreaElement;
+
+    if (!userName.value || !userEmail.value || !message.value) {
+      alert("Please fill in all fields");
+      return;
+    }
+
     emailjs
       .sendForm(
         "service_hn4qpwz",
