@@ -11,33 +11,67 @@ export default function Diagnosis() {
   const [information, setInformation] = useState([
     {
       symptom: "Heavy or prolonged menstrual periods",
-      value: 2,
       isSelected: false,
+      miniSymptoms: [
+        { name: "Abdominal cramps", isSelected: false, value: 2 },
+        { name: "Irregular bleeding", isSelected: false, value: 2 },
+        { name: "Fatigue", isSelected: false, value: 2 },
+      ],
+      value: 0,
     },
     {
       symptom: "Pain or pressure in the pelvic area",
-      value: 2,
       isSelected: false,
+      miniSymptoms: [
+        { name: "Pain during intercourse", isSelected: false, value: 2 },
+        { name: "Bloating", isSelected: false, value: 2 },
+        { name: "Urinary urgency", isSelected: false, value: 2 },
+      ],
+      value: 0,
     },
     {
       symptom: "Difficulty emptying the bladder",
-      value: 2,
       isSelected: false,
+      miniSymptoms: [
+        { name: "Urinary retention", isSelected: false, value: 2 },
+        { name: "Frequent urination", isSelected: false, value: 2 },
+        { name: "Weak urine flow", isSelected: false, value: 2 },
+      ],
+      value: 0,
     },
     {
-      symptom: "Frequently Urination",
-      value: 2,
+      symptom: "Frequent Urination",
       isSelected: false,
+      miniSymptoms: [
+        { name: "Urinary tract infection", isSelected: false, value: 2 },
+        { name: "Diabetes", isSelected: false, value: 2 },
+        { name: "Bladder dysfunction", isSelected: false, value: 2 },
+      ],
+      value: 0,
     },
     {
       symptom: "Pain during sex",
-      value: 2,
       isSelected: false,
+      miniSymptoms: [
+        { name: "Vaginal dryness", isSelected: false, value: 2 },
+        { name: "Pelvic inflammatory disease", isSelected: false, value: 2 },
+        { name: "Endometriosis", isSelected: false, value: 2 },
+      ],
+      value: 0,
     },
     {
       symptom: "Constipation",
-      value: 2,
       isSelected: false,
+      miniSymptoms: [
+        { name: "Hard stools", isSelected: false, value: 2 },
+        {
+          name: "Straining during bowel movements",
+          isSelected: false,
+          value: 2,
+        },
+        { name: "Abdominal pain", isSelected: false, value: 2 },
+      ],
+      value: 0,
     },
   ]);
 
@@ -48,7 +82,6 @@ export default function Diagnosis() {
           return {
             ...elem,
             isSelected: !elem.isSelected,
-            value: elem.isSelected ? 2 : 16.5,
           };
         }
         return elem;
@@ -58,21 +91,44 @@ export default function Diagnosis() {
 
   //Naive Bayes Algo
   const handleResult = () => {
-    let myomaProbability = 0;
-    information.forEach((info) => {
-      if (
-        info.symptom === "Heavy or prolonged menstrual periods" ||
-        info.symptom === "Pain or pressure in the pelvic area" ||
-        info.symptom === "Difficulty emptying the bladder" ||
-        info.symptom === "Frequently Urination" ||
-        info.symptom === "Pain during sex" ||
-        info.symptom === "Constipation"
-      ) {
-        myomaProbability += info.value;
-      }
-    });
-    setResult(myomaProbability);
+    const totalValue = information.reduce((acc, info) => {
+      const sumOfValues = info.miniSymptoms.reduce((miniAcc, miniSymptom) => {
+        return miniAcc + (miniSymptom.isSelected ? miniSymptom.value : 2);
+      }, 0);
+      return acc + sumOfValues;
+    }, 0);
+
+    let priorProbability, likelihood;
+
+    if (age < 40) {
+      priorProbability = 0.25; // Prior probability of having myoma
+      likelihood = 0.253; // Likelihood of observed symptoms given myoma
+    } else {
+      priorProbability = 0.4; // Prior probability of having myoma
+      likelihood = 0.37; // Likelihood of observed symptoms given myoma
+    }
+
+    const probabilityMyoma = totalValue / (likelihood / priorProbability);
+
+    // Set the probability as the result
+    setResult(probabilityMyoma);
   };
+
+  const handleSelectMiniSymptom = (mainIndex: number, miniIndex: number) => {
+    setInformation((prevState) => {
+      const updatedInformation = [...prevState];
+      const selectedMiniSymptom = {
+        ...updatedInformation[mainIndex].miniSymptoms[miniIndex],
+      };
+      selectedMiniSymptom.isSelected = !selectedMiniSymptom.isSelected;
+      selectedMiniSymptom.value = selectedMiniSymptom.isSelected ? 5.12 : 2;
+      updatedInformation[mainIndex].miniSymptoms[miniIndex] =
+        selectedMiniSymptom;
+      console.log("ito ", selectedMiniSymptom);
+      return updatedInformation;
+    });
+  };
+  console.log("this :" + information);
 
   useEffect(() => {
     // Rule-based remark generation
@@ -130,29 +186,59 @@ export default function Diagnosis() {
         <h1 className={`font-semibold ${textStyle}`}>Select Symptom</h1>
       </div>
 
-      <ul className=" border-x-2 border-t-2 rounded-lg">
+      <ul className=" border-2 rounded-lg">
         {...information.map((info, index) => {
           return (
-            <li
-              className={`flex justify-between items-center h-24 border-b-2  px-5 ${
-                info.isSelected && "bg-blue-200 "
-              }`}
-            >
-              <div className="flex gap-10">
-                <h1 className={textStyle}>{index + 1}</h1>
-                <h1 className={textStyle}>{info.symptom}</h1>
-              </div>
-              <button
-                className={`h-12 w-24 text-blue-900  rounded-lg border-2  font-semibold hover:bg-blue-900 hover:text-white ${
-                  info.isSelected
-                    ? "text-white bg-blue-900 border-white"
-                    : "bg-blue-300 border-blue-900"
+            <>
+              <li
+                className={`flex justify-between items-center h-24  border  px-5 ${
+                  info.isSelected && "bg-blue-200 "
                 }`}
-                onClick={() => handleSelect(index)}
               >
-                Select
-              </button>
-            </li>
+                <div className="flex gap-10">
+                  <h1 className={textStyle}>{index + 1}</h1>
+                  <h1 className={textStyle}>{info.symptom}</h1>
+                </div>
+                <button
+                  className={`h-12 w-24 text-blue-900  rounded-lg border-2  font-semibold hover:bg-blue-900 hover:text-white ${
+                    info.isSelected
+                      ? "text-white bg-blue-900 border-white"
+                      : "bg-blue-300 border-blue-900"
+                  }`}
+                  onClick={() => handleSelect(index)}
+                >
+                  Select
+                </button>
+              </li>
+              {info.isSelected && (
+                <ul className="m-2 flex flex-col items-end">
+                  {info.miniSymptoms.map((mini, miniIndex) => {
+                    return (
+                      <li
+                        key={index - miniIndex}
+                        className={`flex justify-between items-center h-14 border  px-5 w-2/3 border-1 ${
+                          mini.isSelected && "bg-blue-200 "
+                        }`}
+                      >
+                        <div className="flex gap-10">
+                          <h1 className={textStyle}>{miniIndex + 1}</h1>
+                          <h1 className={textStyle}>{mini.name}</h1>
+                        </div>
+                        <button
+                          className={`h-10 w-20 text-blue-900  rounded-lg border-2  font-semibold hover:bg-blue-900 hover:text-white 
+                            `}
+                          onClick={() =>
+                            handleSelectMiniSymptom(index, miniIndex)
+                          }
+                        >
+                          Add
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </>
           );
         })}
       </ul>
