@@ -1,6 +1,7 @@
 import Group from "../assets/svg/Group";
 import HomeLogo from "../assets/svg/HomeLogo";
 import Info from "../assets/svg/Info";
+import Information from "../assets/svg/Information";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
 export default function Sidenav() {
@@ -11,6 +12,9 @@ export default function Sidenav() {
       </AnchorLink>
       <AnchorLink href="#info">
         <Info width="32" height="32" />
+      </AnchorLink>
+      <AnchorLink href="#information">
+        <Information width="32" height="32" />
       </AnchorLink>
       <AnchorLink href="#group">
         <Group width="32" height="32" />
