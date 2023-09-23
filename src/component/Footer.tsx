@@ -7,7 +7,13 @@ export default function Navbar() {
       <a href="/">
         <img src={Logo} alt="Logo" className="h-20" />
       </a>
-      <h1 className={textStyle}>Email : myomexthesis@gmail.com</h1>
+      <a
+        href="https://www.facebook.com/andalis.gil"
+        target="_blank"
+        className={textStyle}
+      >
+        Email : myomexthesis@gmail.com
+      </a>
       <h1 className={textStyle}>Alrights reserved 2023</h1>
     </div>
   );
