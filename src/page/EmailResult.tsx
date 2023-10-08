@@ -8,6 +8,7 @@ export default function EmailResult() {
   const location = useLocation();
   const result = location.state?.result;
   const remark = location.state?.remark;
+  const otherSymptoms = location.state?.otherSymptoms;
 
   const form = useRef<HTMLFormElement>(null);
 
@@ -69,6 +70,9 @@ export default function EmailResult() {
         <p className="text-blue-900 font-semibold">
           Certainty Factor : {remark}
         </p>
+        <p className="text-blue-900 font-semibold">
+          Other Symptoms : {otherSymptoms}
+        </p>
       </div>
       <div className="flex justify-between">
         <form
@@ -101,7 +105,9 @@ export default function EmailResult() {
           />
           <textarea
             name="message"
-            value={` Base on Diagnosis Result, the probability of you having a Myoma was ${result}%, which means that ${remark}`}
+            value={` Base on Diagnosis Result, the probability of you having a Myoma was ${result}%, which means that ${remark}
+            
+            Other Symptoms: ${otherSymptoms}`}
             className="rounded-lg h-32 hidden"
           />
           <input

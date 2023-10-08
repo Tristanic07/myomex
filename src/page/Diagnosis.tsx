@@ -7,8 +7,10 @@ export default function Diagnosis() {
   const textStyle = "font-mono text-blue-900 text-xl";
   const [result, setResult] = useState<number>(0);
   const [remark, setRemark] = useState("");
+  const [otherSymptoms, setOtherSymptoms] = useState("");
   const [age, setAge] = useState<number>(0);
   const [information, setInformation] = useState([
+    //initiating the value of each symptoms
     {
       symptom: "Heavy or prolonged menstrual periods",
       isSelected: false,
@@ -75,6 +77,7 @@ export default function Diagnosis() {
     },
   ]);
 
+  //select and unselect symptoms
   const handleSelect = (index: number) => {
     setInformation((prevInformation) =>
       prevInformation.map((elem, i) => {
@@ -100,9 +103,18 @@ export default function Diagnosis() {
 
     let priorProbability, likelihood;
 
-    if (age < 40) {
+    if (age < 20) {
+      priorProbability = 0.1; // Prior probability of having myoma
+      likelihood = 0.15; // Likelihood of observed symptoms given myoma
+    } else if (age < 30) {
+      priorProbability = 0.15; // Prior probability of having myoma
+      likelihood = 0.2; // Likelihood of observed symptoms given myoma
+    } else if (age < 40) {
       priorProbability = 0.25; // Prior probability of having myoma
       likelihood = 0.253; // Likelihood of observed symptoms given myoma
+    } else if (age < 50) {
+      priorProbability = 0.3; // Prior probability of having myoma
+      likelihood = 0.3; // Likelihood of observed symptoms given myoma
     } else {
       priorProbability = 0.4; // Prior probability of having myoma
       likelihood = 0.37; // Likelihood of observed symptoms given myoma
@@ -114,6 +126,7 @@ export default function Diagnosis() {
     setResult(probabilityMyoma);
   };
 
+  //select and unselect mini-symptoms
   const handleSelectMiniSymptom = (mainIndex: number, miniIndex: number) => {
     setInformation((prevState) => {
       const updatedInformation = [...prevState];
@@ -131,27 +144,46 @@ export default function Diagnosis() {
   console.log("this :" + information);
 
   useEffect(() => {
-    // Rule-based remark generation
+    // Rule-based remark generation base on result and age
     let remarks = "";
     if (result === 0) return;
 
     if (result < 30) {
-      if (age < 40) {
+      if (age < 20) {
         remarks = "You have a low probability of having myoma.";
+      } else if (age < 30) {
+        remarks = "You have a low probability of having myoma.";
+      } else if (age < 40) {
+        remarks = "You have a low to moderate probability of having myoma.";
+      } else if (age < 50) {
+        remarks = "You have a low to moderate probability of having myoma.";
       } else {
         remarks =
-          "You have a low probability of having myoma. However, it is advisable to consult a healthcare professional for further evaluation due to your age.";
+          "You have a low to moderate probability of having myoma. However, it is advisable to consult a healthcare professional for further evaluation due to your age.";
       }
     } else if (result >= 30 && result < 70) {
-      if (age < 40) {
+      if (age < 20) {
         remarks = "You have a moderate probability of having myoma.";
+      } else if (age < 30) {
+        remarks = "You have a moderate probability of having myoma.";
+      } else if (age < 40) {
+        remarks = "You have a moderate to high probability of having myoma.";
+      } else if (age < 50) {
+        remarks = "You have a moderate to high probability of having myoma.";
       } else {
         remarks =
-          "You have a moderate probability of having myoma. It is recommended to consult a healthcare professional for a comprehensive evaluation.";
+          "You have a moderate to high probability of having myoma. It is recommended to consult a healthcare professional for a comprehensive evaluation.";
       }
     } else {
-      if (age < 40) {
+      if (age < 20) {
         remarks = "You have a high probability of having myoma.";
+      } else if (age < 30) {
+        remarks = "You have a high probability of having myoma.";
+      } else if (age < 40) {
+        remarks = "You have a high probability of having myoma.";
+      } else if (age < 50) {
+        remarks =
+          "You have a high probability of having myoma. It is advisable to consult a healthcare professional for further assessment and guidance.";
       } else {
         remarks =
           "You have a high probability of having myoma. It is advisable to consult a healthcare professional for further assessment and guidance.";
@@ -267,7 +299,11 @@ export default function Diagnosis() {
             </p>
           </div>
         ) : (
-          <Resultpop result={result} remark={remark} />
+          <Resultpop
+            result={result}
+            remark={remark}
+            otherSymptoms={otherSymptoms}
+          />
         )}
       </Popup>
       <div className="flex items-center absolute right-14 gap-2 my-2">
@@ -281,6 +317,20 @@ export default function Diagnosis() {
         <label>
           <h1 className="text-xl font-semibold text-blue-900 font-mono">Age</h1>
         </label>
+      </div>
+      <div>
+        <label htmlFor="other">
+          <h1 className="text-xl font-semibold text-blue-900 font-mono">
+            Other Symptoms:
+          </h1>
+        </label>
+        <input
+          name="other"
+          type="text"
+          placeholder="Other symptoms you may be experiencing..."
+          className="h-20 break-word w-2/3 px-3 border-2 rounded-lg"
+          onChange={(e) => setOtherSymptoms(e.target.value)}
+        />
       </div>
     </div>
   );

@@ -16,20 +16,6 @@ export default function Professional() {
             schedule: "8:00 am. - 5:00 pm.",
             achievement: "Kahit ano muna",
           },
-          {
-            image: "",
-            name: "Dalisay, Cardo",
-            hospital: "OSMON",
-            schedule: "7:00 A.M. - 5:00 P.M.",
-            achievement: "Kahit ano muna",
-          },
-          {
-            image: "",
-            name: "Britannia, Lelouch Vi",
-            hospital: "OSMON",
-            schedule: "7:00 A.M. - 5:00 P.M.",
-            achievement: "Kahit ano muna",
-          },
         ].map((information, index) => {
           return <Card key={index} information={information} />;
         })}
