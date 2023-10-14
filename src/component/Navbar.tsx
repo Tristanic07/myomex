@@ -21,7 +21,7 @@ export default function Navbar() {
       style={{ backgroundImage: `url(${Bgnav})` }}
     >
       <a href="/">
-        <img src={Logo} alt="Logo" className="h-20" />
+        <img src={Logo} alt="Logo" className="h-20 hover:h-24" />
       </a>
       <ul className="flex gap-10">
         <li>
