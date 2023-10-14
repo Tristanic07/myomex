@@ -1,9 +1,13 @@
 import Logo from "../Image/logo.png";
+import Bgfoot from "../Image/bgfoot.png";
 
 export default function Navbar() {
-  const textStyle = "text-xl text-blue-900 hover:text-blue-500";
+  const textStyle = "text-sm text-white hover:text-blue-500";
   return (
-    <div className="flex flex-col bg-slate-400 h-40 items-center gap-2 py-2">
+    <div
+      className="flex flex-col  h-40 items-center gap-2 py-2"
+      style={{ backgroundImage: `url(${Bgfoot})` }}
+    >
       <a href="/">
         <img src={Logo} alt="Logo" className="h-20" />
       </a>

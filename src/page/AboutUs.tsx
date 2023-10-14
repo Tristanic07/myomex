@@ -1,4 +1,4 @@
-import Logo from "../Image/logo.png";
+import Logo from "../Image/csa.png";
 export default function AboutUs() {
   return (
     <div className="py-10 bg-gray-100" id="info">

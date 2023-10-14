@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Logo from "../Image/logo.png";
 import Dropdown from "../assets/svg/Dropdown";
+import Bgnav from "../Image/bgnav.png";
+
 export default function Navbar() {
-  const textStyle = "text-xl text-blue-900 hover:text-blue-500";
+  const textStyle = "text-lg text-white hover:text-blue-500";
   const [isDropDown, setIsDropDown] = useState(false);
   const [selected, setSelected] = useState("");
 
@@ -14,7 +16,10 @@ export default function Navbar() {
     setIsDropDown(!isDropDown);
   };
   return (
-    <nav className="flex bg-slate-100 h-24 items-center justify-between px-20 ">
+    <nav
+      className="flex bg-slate-100 h-24 items-center justify-between px-20 fixed w-full "
+      style={{ backgroundImage: `url(${Bgnav})` }}
+    >
       <a href="/">
         <img src={Logo} alt="Logo" className="h-20" />
       </a>

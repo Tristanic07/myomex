@@ -324,11 +324,10 @@ export default function Diagnosis() {
             Other Symptoms:
           </h1>
         </label>
-        <input
+        <textarea
           name="other"
-          type="text"
           placeholder="Other symptoms you may be experiencing..."
-          className="h-20 break-word w-2/3 px-3 border-2 rounded-lg"
+          className="h-36 break-word w-2/3 px-3 border-2 rounded-lg border-blue-700 focus:border-blue-300"
           onChange={(e) => setOtherSymptoms(e.target.value)}
         />
       </div>

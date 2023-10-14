@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <Sidenav />
-      <div className="flex px-20 gap-10 py-32" id="home">
+      <div className="flex px-20 gap-10 pb-38 p-56" id="home">
         <img src={Img2} alt="Health" className="w-1/2 h-64 border-2" />
         <div className="px-5 flex flex-col gap-3">
           <h1 className="text-center text-3xl font-semibold font-mono text-blue-900">
