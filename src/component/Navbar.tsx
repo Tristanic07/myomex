@@ -17,7 +17,7 @@ export default function Navbar() {
   };
   return (
     <nav
-      className="flex bg-slate-100 h-24 items-center justify-between px-20 fixed w-full "
+      className="flex bg-slate-100 h-24 items-center justify-between px-20 fixed w-full opacity-95"
       style={{ backgroundImage: `url(${Bgnav})` }}
     >
       <a href="/">

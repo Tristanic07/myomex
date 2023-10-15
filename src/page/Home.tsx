@@ -1,7 +1,8 @@
+// import { useState } from "react";
 import Img2 from "../Image/2.jpeg";
 import Sidenav from "../component/Sidenav";
 import AboutUs from "./AboutUs";
-import Introduction from "./Introduction";
+// import Introduction from "./Introduction";
 import Professional from "./Professional";
 import { Link } from "react-router-dom";
 
@@ -30,7 +31,7 @@ export default function Home() {
       </div>
 
       <AboutUs />
-      <Introduction />
+      {/* {!isShow ? <button className="">Learn More</button> : <Introduction />} */}
       <Professional />
     </>
   );
