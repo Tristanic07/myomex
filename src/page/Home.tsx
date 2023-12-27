@@ -13,7 +13,7 @@ export default function Home() {
       <div className="flex px-20 gap-10 pb-38 p-56" id="home">
         <img src={Img2} alt="Health" className="w-1/2 h-64 border-2" />
         <div className="px-5 flex flex-col gap-3">
-          <h1 className="text-center text-4xl font-semibold font-mono text-blue-900">
+          <h1 className="text-center text-4xl font-bold font-mono text-blue-900">
             TAKE A DIAGNOSIS TEST/PROCESS
           </h1>
           <p className="text-md">
