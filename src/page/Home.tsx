@@ -14,7 +14,7 @@ export default function Home() {
         <img src={Img2} alt="Health" className="w-1/2 h-64 border-2" />
         <div className="px-5 flex flex-col gap-3">
           <h1 className="text-center text-4xl font-bold font-mono text-blue-900">
-            TAKE A DIAGNOSIS TEST/PROCESS
+            TAKE A DIAGNOSIS TEST
           </h1>
           <p className="text-md">
             An efficient and convenient method to identify if you have symptoms
